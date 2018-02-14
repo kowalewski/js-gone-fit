@@ -1,7 +1,7 @@
+import { getDateComponent } from './helpers/getDateComponent';
 import printDifference from './lodash';
 import { createMap } from './map';
-import formatter from './date';
-import { print } from './helpers';
+import { print, intersectionObserver } from './helpers';
 
 import '../css/app.css';
 
@@ -11,12 +11,14 @@ function initDateExample() {
         print('date', formatterFn(now));
     }
 
-    printCurrentDate(formatter);
+    intersectionObserver('date', () => {
+        getDateComponent().then(printCurrentDate);
+    });
 }
 
 function initMapExample() {
     const mapId = 'map';
-    createMap(mapId);
+    intersectionObserver(mapId, () => createMap(mapId));
 }
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -1,4 +1,4 @@
-import { difference } from 'lodash';
+import difference from 'lodash/difference';
 import { print } from '../helpers';
 
 export default function printDifference() {
